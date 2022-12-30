@@ -1,1 +1,15 @@
-<p>signup works!</p>
+<div class="signup">
+    <div class="container">
+        <h2>Регистрация</h2>
+        <input type="text" email="email" [(ngModel)]="user.email" #email="ngModel" required placeholder="Enter Email" required minlength="10" required pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" />
+        <div class="alert-msg" [hidden]="email.valid || email.untouched">
+            Некорректный E-mail
+        </div>
+        <input id="password" type="password" [(ngModel)]="user.password" #password="ngModel" minlength="6" placeholder="Enter password" #pass required>
+        <div class="alert-msg" [hidden]="password.valid || password.untouched">
+            Некорректный пароль.
+        </div>
+        <input id="confirmpassword" type="password" placeholder="Confirm password" #confirmpass required>
+        <button [disabled]="email.invalid || email.invalid || password.invalid" (click)="signUp()">Зарегистрироваться</button>
+    </div>
+</div>
